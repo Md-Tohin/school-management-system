@@ -13,6 +13,7 @@ import productRouter from "./route/product.route.js";
 import cartRouter from "./route/cart.route.js";
 import addressRouter from "./route/address.route.js";
 import orderRouter from "./route/order.route.js";
+import subCatRouter from "./route/subcat.route.js";
 
 const app = express();
 
@@ -41,6 +42,7 @@ app.get('/', (request, response) => {
 //  routes
 app.use('/api/user', userRouter)
 app.use('/api/category', categoryRouter)
+app.use('/api/subcat', subCatRouter)
 // app.use('/api/subcategory', subCategoryRouter)
 app.use('/api/product', productRouter)
 app.use('/api/file', uploadRouter)
