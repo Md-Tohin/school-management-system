@@ -15,11 +15,10 @@ import addressRouter from "./route/address.route.js";
 import orderRouter from "./route/order.route.js";
 import subCatRouter from "./route/subcat.route.js";
 
-const app = express();
-
+const app = express()
 app.use(cors({
-    origin: process.env.FRONTEND_URL,
-    credentials: true
+    credentials : true,
+    origin : process.env.FRONTEND_URL
 }))
 
 // app.use(cors({
