@@ -1,35 +1,57 @@
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
-const cookeParser = require('cookie-parser');
-const dotenv = require('dotenv');
-const { default: categoryRouter } = require('./routers/category.route.js');
+import express, { response } from "express"
+import cors from "cors"
+import dotenv from "dotenv"
 dotenv.config();
+import cookieParser from 'cookie-parser'
+import morgan from 'morgan'
+import helmet from "helmet";
+import connectDB from "./config/connectDB.js";
+import categoryRouter from "./route/category.route.js";
+import userRouter from "./route/user.route.js";
+import uploadRouter from "./route/upload.route.js";
+import subCategoryRouter from "./route/subcategory.route.js";
+import productRouter from "./route/product.route.js";
+import cartRouter from "./route/cart.route.js";
+import addressRouter from "./route/address.route.js";
+import orderRouter from "./route/order.route.js";
 
 const app = express();
-app.use(express.json());
-app.use(express.urlencoded({
-    extended: true
-}));
-app.use(cors());
-app.use(cookeParser());
 
-// mongoDB connection
+app.use(cors({
+    credentials: true,
+    origin: process.env.FRONTEND_URL
+}))
 
-mongoose.connect(process.env.MONGODB_URI).then(() => console.log("MongoDB Connected..."))
-   .catch(err => console.log(err));
+app.use(express.json())
+app.use(cookieParser())
+app.use(morgan())
+app.use(helmet({
+    crossOriginResourcePolicy: false
+}))
 
-app.get("/", (req, res) => {
-    res.send("Server is running on port")
-})
-app.get("/test", (req, res) => {
-    res.send({id: 1, message: "Hello World"})
-})
+// app.use(express.json());
+const PORT = 8080 || process.env.PORT
 
+app.get('/', (request, response) => {
+    response.json({
+        message: `Server is running on port: ${PORT}`
+    })
+});
+ 
+
+//  routes
+app.use('/api/user', userRouter)
 app.use('/api/category', categoryRouter)
+app.use('/api/subcategory', subCategoryRouter)
+app.use('/api/product', productRouter)
+app.use('/api/file', uploadRouter)
+app.use('/api/cart', cartRouter)
+app.use('/api/address', addressRouter)
+app.use('/api/order', orderRouter)
 
-const PORT = process.env.PORT;
-app.listen(PORT, () => {
-    console.log("Server is running at port :",PORT);
-})
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server is running on PORT: ${PORT}`);
+    })
+});
 
