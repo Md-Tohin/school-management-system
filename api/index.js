@@ -12,7 +12,7 @@ import uploadRouter from "./route/upload.route.js";
 // import subCategoryRouter from "./route/subcategory.route.js";
 import productRouter from "./route/product.route.js";
 import cartRouter from "./route/cart.route.js";
-// import addressRouter from "./route/address.route.js";
+import addressRouter from "./route/address.route.js";
 // import orderRouter from "./route/order.route.js";
 
 const app = express();
@@ -46,7 +46,7 @@ app.use('/api/category', categoryRouter)
 app.use('/api/product', productRouter)
 app.use('/api/file', uploadRouter)
 app.use('/api/cart', cartRouter)
-// app.use('/api/address', addressRouter)
+app.use('/api/address', addressRouter)
 // app.use('/api/order', orderRouter)
 
 connectDB().then(() => {
