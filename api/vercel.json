@@ -1,9 +1,9 @@
 {
     "version" : 2,
-    "name" : "Blinkit",
+    "name" : "School management system",
     "builds" : [
         {
-            "src" : "./server.js",
+            "src" : "./index.js",
             "use" : "@vercel/node"
         }
     ],

@@ -20,7 +20,7 @@ app.get("/test", (req, res) => {
     res.send({id: 1, message: "Hello Bangladesh"})
 })
 
-const PORT = process.env.PORT;
+const PORT = 8080;
 app.listen(PORT, () => {
     console.log("Server is running at port :",PORT);
 })
