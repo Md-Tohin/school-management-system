@@ -10,7 +10,7 @@ import categoryRouter from "./route/category.route.js";
 import userRouter from "./route/user.route.js";
 // import uploadRouter from "./route/upload.route.js";
 // import subCategoryRouter from "./route/subcategory.route.js";
-// import productRouter from "./route/product.route.js";
+import productRouter from "./route/product.route.js";
 // import cartRouter from "./route/cart.route.js";
 // import addressRouter from "./route/address.route.js";
 // import orderRouter from "./route/order.route.js";
@@ -43,7 +43,7 @@ app.get('/', (request, response) => {
 app.use('/api/user', userRouter)
 app.use('/api/category', categoryRouter)
 // app.use('/api/subcategory', subCategoryRouter)
-// app.use('/api/product', productRouter)
+app.use('/api/product', productRouter)
 // app.use('/api/file', uploadRouter)
 // app.use('/api/cart', cartRouter)
 // app.use('/api/address', addressRouter)
