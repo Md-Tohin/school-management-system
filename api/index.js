@@ -13,6 +13,11 @@ app.use(express.urlencoded({
 app.use(cors());
 app.use(cookeParser());
 
+// mongoDB connection
+
+mongoose.connect(process.env.MONGODB_URI).then(() => console.log("MongoDB Connected..."))
+   .catch(err => console.log(err));
+
 app.get("/", (req, res) => {
     res.send("Server is running on port")
 })
