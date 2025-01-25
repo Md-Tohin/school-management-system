@@ -13,6 +13,9 @@ app.use(express.urlencoded({
 app.use(cors());
 app.use(cookeParser());
 
+app.get("/", (req, res) => {
+    res.send("Server is running")
+})
 app.get("/test", (req, res) => {
     res.send({id: 1, message: "Hello Bangladesh"})
 })
