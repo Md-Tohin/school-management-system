@@ -18,8 +18,8 @@ import subCatRouter from "./route/subcat.route.js";
 const app = express();
 
 app.use(cors({
-    credentials: true,
-    origin: 'https://school-management-system-demo-dun.vercel.app'
+    origin: process.env.FRONTEND_URL,
+    credentials: true
 }))
 
 // app.use(cors({
