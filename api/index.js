@@ -14,13 +14,13 @@ app.use(cors());
 app.use(cookeParser());
 
 app.get("/", (req, res) => {
-    res.send("Server is running")
+    res.send("Server is running on port")
 })
 app.get("/test", (req, res) => {
-    res.send({id: 1, message: "Hello Bangladesh"})
+    res.send({id: 1, message: "Hello World"})
 })
 
-const PORT = 8080;
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
     console.log("Server is running at port :",PORT);
 })
