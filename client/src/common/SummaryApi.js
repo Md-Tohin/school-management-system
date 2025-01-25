@@ -64,19 +64,19 @@ const SummaryApi = {
     },
     // subcategory
     createSubCategory: {
-        url: '/api/subcategory/create',
+        url: '/api/subcat/create',
         method: 'post'
     },
     getSubCategory: {
-        url: '/api/subcategory/get',
+        url: '/api/subcat/get',
         method: 'post'
     },
     updateSubCategory: {
-        url: '/api/subcategory/update',
+        url: '/api/subcat/update',
         method: 'put'
     },
     deleteSubCategory: {
-        url: '/api/subcategory/delete',
+        url: '/api/subcat/delete',
         method: 'delete'
     },
     // product
