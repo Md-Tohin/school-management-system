@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const cookeParser = require('cookie-parser');
 const dotenv = require('dotenv');
+const { default: categoryRouter } = require('./routers/category.route.js');
 dotenv.config();
 
 const app = express();
@@ -24,6 +25,8 @@ app.get("/", (req, res) => {
 app.get("/test", (req, res) => {
     res.send({id: 1, message: "Hello World"})
 })
+
+app.use('/api/category', categoryRouter)
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
